@@ -9,11 +9,11 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
 
-	gw "../demo/src/main/proto"
+	gw "./proto"
 )
 
 var (
-	echoEndpoint = flag.String("echo_endpoint", "localhost:6565", "endpoint of YourService")
+	echoEndpoint = flag.String("echo_endpoint", "host.docker.internal:6565", "endpoint of YourService")
 )
 
 func run() error {
