@@ -10,7 +10,7 @@ import org.lognet.springboot.grpc.GRpcService
 class DemoService : DemoGrpc.DemoImplBase() {
     override fun sayHello(request: DemoRequest?, responseObserver: StreamObserver<DemoReply>?) {
 //        super.sayHello(request, responseObserver)
-        val message = DemoReply.newBuilder().setMessage("Hello " + request?.firstName + ", " + request?.lastName)
+        val message = DemoReply.newBuilder().setMessage("Hello " + request?.firstName + ", " + request?.lastName).setImage(Image.newBuilder().setImageId(72728827))
         responseObserver?.onNext(message.build())
         responseObserver?.onCompleted()
     }

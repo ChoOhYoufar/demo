@@ -5,6 +5,9 @@ option java_package = "com.example.demo";
 option java_outer_classname = "DemoProto";
 
 import "google/api/annotations.proto";
+import "bye/bye.proto";
+
+package demo;
 
 service Demo {
     rpc SayHello (DemoRequest) returns (DemoReply) {
@@ -22,4 +25,5 @@ message DemoRequest {
 
 message DemoReply {
     string message = 1;
+    bye.Image image = 2;
 }

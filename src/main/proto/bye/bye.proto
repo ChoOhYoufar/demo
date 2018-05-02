@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.demo";
+option java_outer_classname = "ByeProto";
+
+import "google/api/annotations.proto";
+
+package bye;
+
+service Bye {
+    rpc SayBye (ByeRequest) returns (ByeReply) {
+        option (google.api.http) = {
+            post: "/v1/example/bye"
+            body: "*"
+        };
+    }
+}
+
+message ByeRequest {
+    string firstName = 1;
+    string lastName = 2;
+}
+
+message ByeReply {
+    string message = 1;
+}
+
+message Image {
+    int64 image_id = 1;
+}

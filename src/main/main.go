@@ -9,7 +9,8 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
 
-	gw "../demo/src/main/proto"
+	gw "./proto/bye"
+	gw2 "./proto/demo"
 )
 
 var (
@@ -23,9 +24,13 @@ func run() error {
 
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err := gw.RegisterDemoHandlerFromEndpoint(ctx, mux, *echoEndpoint, opts)
+	err := gw2.RegisterDemoHandlerFromEndpoint(ctx, mux, *echoEndpoint, opts)
+	err2 := gw.RegisterByeHandlerFromEndpoint(ctx, mux, *echoEndpoint, opts)
 	if err != nil {
 		return err
+	}
+	if err2 != nil {
+		return err2
 	}
 
 	return http.ListenAndServe(":8081", mux)
